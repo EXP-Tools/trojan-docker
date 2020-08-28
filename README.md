@@ -18,7 +18,7 @@
 
 ## 环境要求
 
-![](https://img.shields.io/badge/Platform-Linux%20x64-brightgreen.svg)
+![](https://img.shields.io/badge/Platform-Linux%20amd64-brightgreen.svg)
 
 
 ## 事前准备
