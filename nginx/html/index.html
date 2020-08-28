@@ -27,39 +27,39 @@
         <td><a href="https://github.com/lyy289065406">EXP</a></td>
       </tr>
       <tr>
-        <td>STEP 1</td>
+        <td>STEP 01</td>
         <td><code>python3 -m pip install certbot --default-timeout=600 -i https://pypi.tuna.tsinghua.edu.cn/simple</code></td>
       </tr>
       <tr>
-        <td>STEP 2</td>
+        <td>STEP 02</td>
         <td><code>/usr/local/bin/certbot certonly --standalone -d demo_domain.com -d www.demo_domain.com</code></td>
       </tr>
       <tr>
-        <td>STEP 3</td>
+        <td>STEP 03</td>
         <td><code>git clone https://github.com/lyy289065406/trojan-docker /usr/local/trojan-docker</code></td>
       </tr>
       <tr>
-        <td>STEP 4</td>
+        <td>STEP 04</td>
         <td><code>cd /usr/local/trojan-docker</code></td>
       </tr>
       <tr>
-        <td>STEP 5</td>
+        <td>STEP 05</td>
         <td><code>password=demo_password domain=demo_domain.com docker-compose build</code></td>
       </tr>
       <tr>
-        <td>STEP 6</td>
+        <td>STEP 06</td>
         <td><code>./renew_cert.sh</code></td>
       </tr>
       <tr>
-        <td>STEP 7</td>
+        <td>STEP 07</td>
         <td>把 <a href="https://github.com/lyy289065406/trojan-docker/tree/master/nginx/html">nginx/html</a> 下的内容替换为你的站点内容</td>
       </tr>
       <tr>
-        <td>STEP 8</td>
+        <td>STEP 08</td>
         <td><code>docker-compose up -d</code></td>
       </tr>
       <tr>
-        <td>STEP 9</td>
+        <td>STEP 09</td>
         <td><code>docker-compose down</code></td>
       </tr>
       <tr>
