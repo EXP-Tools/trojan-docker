@@ -1,10 +1,10 @@
 # How to use :
-# docker build -t expm02/docker-nginx --build-arg domain=demo_domain.xyz .
+# docker build -t expm02/docker-nginx --build-arg domain=demo_domain.com .
 # --------------------------------------------------------------------------------
 
 FROM nginx:mainline
 MAINTAINER EXP
-ARG domain=demo_domain.xyz
+ARG domain=demo_domain.com
 
 RUN sed -i s@/deb.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list
 RUN apt-get clean && \

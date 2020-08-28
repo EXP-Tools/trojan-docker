@@ -23,48 +23,83 @@
 
 ## 事前准备
 
-域名
+- 宿主机安装 docker、docker-compose
+- 宿主机安装 python3
+- 已申请可用域名，如 demo_domain.com
 
 
 ## 部署步骤
-
-### 安装 docker
-
-过程略，自行谷歌或百度即可，要求安装：
-
-- docker
-- docker-compose
 
 ### 安装 certbot
 
 建议通过 python3 安装：
 
-```python
+```shell
 python3 -m pip install certbot --default-timeout=600 -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 > 考虑到国内安装超时问题，该命令已指定了安装源为清华源
 
-### 申请域名的 HTTPS 证书
+
+### 用 certbot 为域名申请免费 HTTPS 证书
+
+```shell
+/usr/local/bin/certbot certonly --standalone -d demo_domain.com -d www.demo_domain.com
+```
+
+> 第一次执行该命令，需要根据交互步骤先注册邮箱，以后不再需要。
 
 
+### 安装 trojan 服务
 
-# 第一次要输入邮箱注册，以后不用
-/usr/local/bin/certbot certonly --standalone -d exp-blog.xyz -d www.exp-blog.xyz
+```shell
 
-# 到期前 30 天可以用这个命令更新证书； 其余时间可以用上面命令更新证书（每次有效期是3个月）
-/usr/local/bin/certbot renew
+# 下载本项目仓库
+git clone https://github.com/lyy289065406/trojan-docker /usr/local/trojan-docker
+cd /usr/local/trojan-docker
 
-# 设置定时更新(定时任务要关掉80端口)
-crontab -e
-0 0 1 */2 0 docker-compose down; /usr/bin/certbot renew; docker-compose up -d
+# 构建 docker 镜像
+# password 为之后客户端连接 trojan 的密码
+# domain 为前面准备好的域名
+password=demo_password domain=demo_domain.com docker-compose build
 
+# 刷新证书有效期，并复制宿主机的 HTTPS 证书到 docker 容器
+./renew_cert.sh
 
-./renew.sh
-
-
-
-password=123456 domain=abc.com docker-compose build
-./renew.sh
+# 在后台启动 trojan 服务
 docker-compose up -d
+
+# 停止 trojan 服务
 docker-compose down
+```
+
+
+## 自定义伪装站点内容
+
+把 [`nginx/html`](nginx/html) 下的内容替换为你站点的内容即可。
+
+
+
+## 自动刷新证书
+
+certbot 申请的证书有效期为 90 天，在到期前的 30 天可以重新执行以下命令为更新证书有效期：
+
+```
+/usr/local/bin/certbot renew
+```
+
+> 该命令会占用 80 端口，执行前要停止相关进程（如 nginx）
+
+但是每次都手动更新会比较麻烦，可以把 [renew_cert.sh](renew_cert.sh) 脚本设置到 crontab 自动更新证书：
+
+
+```shell
+
+# 编辑定时任务
+crontab -e
+
+# 每两个月更新一次证书
+0 0 1 */2 0 /bin/sh /usr/local/trojan-docker/renew_cert.sh
+```
+
+

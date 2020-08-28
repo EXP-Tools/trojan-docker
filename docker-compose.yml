@@ -1,5 +1,5 @@
 # How to use :
-# password=demo_password domain=demo_domain.xyz docker-compose build
+# password=demo_password domain=demo_domain.com docker-compose build
 # docker-compose up -d
 # docker-compose down
 # --------------------------------------------------------------------------------
