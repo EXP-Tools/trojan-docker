@@ -25,7 +25,7 @@
 
 - 宿主机安装 docker、docker-compose
 - 宿主机安装 python3
-- 已申请可用域名，如 demo_domain.com
+- 已申请可用域名（如 demo_domain.com），并解析到宿主机的公网 IP
 
 
 ## 部署步骤
@@ -35,10 +35,12 @@
 建议通过 python3 安装：
 
 ```shell
+
+# 考虑到国内安装超时问题，该命令已指定了安装源为清华源
 python3 -m pip install certbot --default-timeout=600 -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
-> 考虑到国内安装超时问题，该命令已指定了安装源为清华源
+> 之所以不把 certbot 也做成 docker 容器，是因为它的入侵性太强，做成容器反而不方便
 
 
 ### 2. 用 certbot 为域名申请免费 HTTPS 证书
