@@ -30,7 +30,7 @@
 
 ## 部署步骤
 
-### 安装 certbot
+### 1. 安装 certbot
 
 建议通过 python3 安装：
 
@@ -41,7 +41,7 @@ python3 -m pip install certbot --default-timeout=600 -i https://pypi.tuna.tsingh
 > 考虑到国内安装超时问题，该命令已指定了安装源为清华源
 
 
-### 用 certbot 为域名申请免费 HTTPS 证书
+### 2. 用 certbot 为域名申请免费 HTTPS 证书
 
 ```shell
 /usr/local/bin/certbot certonly --standalone -d demo_domain.com -d www.demo_domain.com
@@ -50,7 +50,7 @@ python3 -m pip install certbot --default-timeout=600 -i https://pypi.tuna.tsingh
 > 第一次执行该命令，需要根据交互步骤先注册邮箱，以后不再需要。
 
 
-### 安装 trojan 服务
+### 3. 安装 trojan 服务
 
 ```shell
 
@@ -74,9 +74,9 @@ docker-compose down
 ```
 
 
-## 自定义伪装站点内容
+### 4. 自定义伪装站点内容
 
-把 [`nginx/html`](nginx/html) 下的内容替换为你站点的内容即可。
+把 [`nginx/html`](nginx/html) 下的内容替换为你站点的内容。
 
 
 
