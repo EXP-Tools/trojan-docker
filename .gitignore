@@ -1,0 +1,4 @@
+cert/letsencrypt/fullchain.pem
+cert/letsencrypt/privkey.pem
+
+bak/*
