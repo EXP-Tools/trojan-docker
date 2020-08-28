@@ -6,7 +6,7 @@
 
 ## 概要
 
-![](imgs/trojan.png)
+![](nginx/html/imgs/trojan.png)
 
 如图所示为 trojan 服务端架构，其中有两个关键组件 trojan 和 nginx 。
 
