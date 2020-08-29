@@ -112,5 +112,5 @@ crontab -e
 | 443 | trojan | trojan 代理服务 | - |
 | 8443 | nginx | 伪装 HTTPS 服务 | - |
 | 80 | nginx | 伪装 HTTP 服务 | - |
-| 80 | certbot | HTTPS 证书申请服务 | 与 nginx 服务端口冲突，故申请/续期证书时需要先停止 nginx |
+| 80 | certbot | HTTPS 证书申请服务 | 与 nginx 服务端口冲突，<br/>故申请/续期证书时需要先停止 nginx |
 
