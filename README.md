@@ -35,7 +35,7 @@
 
 ```shell
 
-# 考虑到国内安装超时问题，该命令已指定了安装源为清华源
+# 考虑到国内安装超时问题，已指定了安装源为清华源
 python3 -m pip install certbot --default-timeout=600 -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
