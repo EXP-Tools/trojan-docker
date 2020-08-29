@@ -18,7 +18,7 @@
 
 ## 环境要求
 
-![](https://img.shields.io/badge/Platform-Linux%20amd64-brightgreen.svg) ![](https://img.shields.io/badge/Platform-CentOS%207%2B-brightgreen.svg) ![](https://img.shields.io/badge/Platform-Ubuntu%2016%0204%2B-brightgreen.svg) ![](https://img.shields.io/badge/Platform-Debian%209%2B-brightgreen.svg)
+![](https://img.shields.io/badge/Platform-Linux%20amd64-brightgreen.svg) ![](https://img.shields.io/badge/OS-CentOS%207%2B-brightgreen.svg) ![](https://img.shields.io/badge/OS-Ubuntu%2016.04%2B-brightgreen.svg) ![](https://img.shields.io/badge/OS-Debian%209%2B-brightgreen.svg)
 
 ## 事前准备
 
