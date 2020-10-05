@@ -14,7 +14,7 @@ RUN apt-get clean && \
 ADD ./etc/camouflage_site.conf /etc/nginx/conf.d/camouflage_site.conf
 RUN mkdir -p /etc/nginx/cert/ && \
     mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.bak && \ 
-    sed -i "s/YOUR_DOMAIN/${domain}/g;" /etc/nginx/conf.d/camouflage_site.conf
+    sed -i "s/YOUR_DOMAIN/${domain}/g" /etc/nginx/conf.d/camouflage_site.conf
 
 EXPOSE 80 8443
 WORKDIR /etc/nginx/
