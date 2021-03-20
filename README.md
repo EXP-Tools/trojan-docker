@@ -1,6 +1,6 @@
 # trojan-docker
 
-> docker 一键部署 trojan 服务端
+> docker 一键部署 trojan 服务端 ：自建 VPS 科学上网
 
 ------
 
