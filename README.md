@@ -49,7 +49,9 @@ python3 -m pip install certbot --default-timeout=600 -i https://pypi.tuna.tsingh
 /usr/local/bin/certbot certonly --standalone -d demo_domain.com -d www.demo_domain.com
 ```
 
-> 第一次执行该命令，需要根据交互步骤先注册邮箱，以后不再需要。
+若是第一次执行该命令，需要根据交互步骤先注册邮箱，以后不再需要。
+
+> 注：若是更换过域名，需要先删除 `/etc/letsencrypt/live/旧域名` 和 `/etc/letsencrypt/renewal/旧域名.conf`，否则无法生成新域名的证书。
 
 
 ### 3. 安装 trojan 服务
