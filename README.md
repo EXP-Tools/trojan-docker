@@ -32,7 +32,7 @@
 
 ### 1. 安装 certbot
 
-为了可以使用 Let's Encrypt 生成 HTTPS 证书，需要在宿主机上安装 certbot，安装方法略。
+为了可以使用 Let's Encrypt 生成 HTTPS 证书，需要在宿主机上安装 certbot 客户端，安装方法略。
 
 > 之所以不把 certbot 也做成 docker 容器，是因为它的入侵性太强，做成容器反而不方便
 
