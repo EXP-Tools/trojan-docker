@@ -32,13 +32,7 @@
 
 ### 1. 安装 certbot
 
-建议通过 python3 安装：
-
-```shell
-
-# 考虑到国内安装超时问题，已指定了安装源为清华源
-python3 -m pip install certbot --default-timeout=600 -i https://pypi.tuna.tsinghua.edu.cn/simple
-```
+为了可以使用 Let's Encrypt 生成 HTTPS 证书，需要在宿主机上安装 certbot，安装方法略。
 
 > 之所以不把 certbot 也做成 docker 容器，是因为它的入侵性太强，做成容器反而不方便
 
@@ -46,11 +40,12 @@ python3 -m pip install certbot --default-timeout=600 -i https://pypi.tuna.tsingh
 ### 2. 用 certbot 为域名申请免费 HTTPS 证书
 
 ```shell
-/usr/local/bin/certbot certonly --standalone -d demo_domain.com -d www.demo_domain.com
+/usr/bin/certbot certonly --standalone -d demo_domain.com -d www.demo_domain.com
 ```
 
 注：
 
+- 若找不到 certbot 脚本路径，请自行审查安装位置是不是 `/usr/bin/`
 - 该命令需要先把 DNS 解析到当前服务器才能成功生成证书（临时域名购买和解析可以到 [namesilo](https://www.namesilo.com)）
 - 若是第一次执行该命令，需要根据交互步骤先注册邮箱，以后不再需要。
 - 若是更换过域名，需要先删除 `/etc/letsencrypt/live/旧域名` 和 `/etc/letsencrypt/renewal/旧域名.conf`，否则无法生成新域名的证书。
