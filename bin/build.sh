@@ -1,8 +1,9 @@
 #!/bin/bash
 # ------------------------
 # 构建镜像
-# bin/build.sh [-c OFF]
-#   -c 是否启用缓存构建: OFF/ON(默认)
+# bin/build.sh 
+#       [-p ${password}] 设置 trojan 密码
+#       [-d ${domain}] 设置 trojan 域名
 # ------------------------
 
 PASSWORD="demo_password"
@@ -25,6 +26,4 @@ password=${PASSWORD} \
 domain=${DOMAIN} \
 docker-compose up -d
 
-
-docker image ls | grep "${image_name}"
 echo "finish ."

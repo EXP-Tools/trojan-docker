@@ -3,8 +3,7 @@
 # --------------------------------------------------------------------------------
 
 FROM centos:7
-MAINTAINER EXP
-ARG password=demo_password
+ARG password="demo_password"
 
 RUN yum update -y && \
     yum install -y epel-release gnutls-bin gnutls-doc

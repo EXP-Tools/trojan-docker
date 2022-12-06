@@ -46,7 +46,7 @@
 
 注：
 
-- 若找不到 certbot 脚本路径，请自行审查安装位置是不是 `/usr/bin/`
+- 若找不到 certbot 脚本路径，请自行检查其安装位置是不是 `/usr/bin/`
 - 该命令需要先把 DNS 解析到当前服务器才能成功生成证书（临时域名购买和解析可以到 [namesilo](https://www.namesilo.com)）
 - 若是第一次执行该命令，需要根据交互步骤先注册邮箱，以后不再需要。
 - 若是更换过域名，需要先删除 `/etc/letsencrypt/live/旧域名` 和 `/etc/letsencrypt/renewal/旧域名.conf`，否则无法生成新域名的证书。
@@ -57,7 +57,6 @@
 ### 0x33 安装 trojan 服务
 
 ```shell
-
 # 下载本项目仓库
 git clone https://github.com/lyy289065406/trojan-docker /usr/local/trojan-docker
 cd /usr/local/trojan-docker
@@ -65,17 +64,17 @@ cd /usr/local/trojan-docker
 # 构建 docker 镜像
 # password 为之后客户端连接 trojan 的密码
 # domain 为前面准备好的域名
-bin/build.sh 
-password=demo_password domain=demo_domain.com docker-compose build
+bin/build.sh -p "demo_password" -d "demo_domain.com"
 
 # 刷新证书有效期，并复制宿主机的 HTTPS 证书到 docker 容器
+# /usr/local/trojan-docker 为安装目录，根据实际情况变更即可
 bin/renew_cert.sh "/usr/local/trojan-docker"
 
 # 在后台启动 trojan 服务
-docker-compose up -d
+bin/run.sh
 
 # 停止 trojan 服务
-docker-compose down
+bin/stop.sh
 ```
 
 
@@ -90,7 +89,7 @@ docker-compose down
 certbot 申请的证书有效期为 90 天，在到期前的 30 天可以重新执行以下命令为更新证书有效期：
 
 ```
-/usr/local/bin/certbot renew
+/usr/bin/certbot renew
 ```
 
 > 该命令会占用 80 端口，执行前要停止相关进程
