@@ -8,7 +8,7 @@ version: '2'
 services:
   nginx:
     hostname: NGINX
-    container_name: docker_nginx
+    container_name: nginx
     build: 
       context: ./nginx
       dockerfile: ./Dockerfile
@@ -18,7 +18,6 @@ services:
       - ./cert/:/etc/nginx/cert/
       - ./nginx/html:/usr/share/nginx/html
     ports:
-      - "80:80"
       - "8443:8443"
     networks: 
       vpn:
@@ -27,7 +26,7 @@ services:
 
   trojan:
     hostname: TROJAN
-    container_name: docker_trojan
+    container_name: trojan
     build: 
       context: ./trojan
       dockerfile: ./Dockerfile

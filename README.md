@@ -4,7 +4,7 @@
 
 ------
 
-## 概要
+## 0x00 概要
 
 ![](nginx/html/imgs/trojan.png)
 
@@ -17,27 +17,28 @@
 > 本项目主要目的是简化 trojan 服务端的搭建流程，默认你已对 trojan 的原理有一定的熟悉，例如为什么要申请域名、为什么要申请证书等等，所以不会对这些内容做过多解释，若希望了解可参考这篇 [教程](https://exp-blog.com/gitbook/book/markdown/notes/net/trojan%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B.html)
 
 
-## 环境要求
+## 0x10 环境要求
 
 ![](https://img.shields.io/badge/Platform-Linux%20amd64-brightgreen.svg) ![](https://img.shields.io/badge/OS-CentOS%207%2B-brightgreen.svg) ![](https://img.shields.io/badge/OS-Ubuntu%2016.04%2B-brightgreen.svg) ![](https://img.shields.io/badge/OS-Debian%209%2B-brightgreen.svg)
 
-## 事前准备
+
+## 0x20 事前准备
 
 - 宿主机安装 docker、docker-compose
 - 宿主机安装 python3
 - 已申请可用域名（如 demo_domain.com），并解析到宿主机的公网 IP
 
 
-## 部署步骤
+## 0x30 部署步骤
 
-### 1. 安装 certbot
+### 0x31 安装 certbot
 
 为了可以使用 Let's Encrypt 生成 HTTPS 证书，需要在宿主机上安装 certbot 客户端，安装方法略。
 
 > 之所以不把 certbot 也做成 docker 容器，是因为它的入侵性太强，做成容器反而不方便
 
 
-### 2. 用 certbot 为域名申请免费 HTTPS 证书
+### 0x32 用 certbot 为域名申请免费 HTTPS 证书
 
 ```shell
 /usr/bin/certbot certonly --standalone -d demo_domain.com -d www.demo_domain.com
@@ -45,7 +46,7 @@
 
 注：
 
-- 若找不到 certbot 脚本路径，请自行审查安装位置是不是 `/usr/bin/`
+- 若找不到 certbot 脚本路径，请自行检查其安装位置是不是 `/usr/bin/`
 - 该命令需要先把 DNS 解析到当前服务器才能成功生成证书（临时域名购买和解析可以到 [namesilo](https://www.namesilo.com)）
 - 若是第一次执行该命令，需要根据交互步骤先注册邮箱，以后不再需要。
 - 若是更换过域名，需要先删除 `/etc/letsencrypt/live/旧域名` 和 `/etc/letsencrypt/renewal/旧域名.conf`，否则无法生成新域名的证书。
@@ -53,10 +54,9 @@
 
 
 
-### 3. 安装 trojan 服务
+### 0x33 安装 trojan 服务
 
 ```shell
-
 # 下载本项目仓库
 git clone https://github.com/lyy289065406/trojan-docker /usr/local/trojan-docker
 cd /usr/local/trojan-docker
@@ -64,34 +64,35 @@ cd /usr/local/trojan-docker
 # 构建 docker 镜像
 # password 为之后客户端连接 trojan 的密码
 # domain 为前面准备好的域名
-password=demo_password domain=demo_domain.com docker-compose build
+bin/build.sh -p "demo_password" -d "demo_domain.com"
 
 # 刷新证书有效期，并复制宿主机的 HTTPS 证书到 docker 容器
-./renew_cert.sh
+# /usr/local/trojan-docker 为安装目录，根据实际情况变更即可
+bin/renew_cert.sh "/usr/local/trojan-docker"
 
 # 在后台启动 trojan 服务
-docker-compose up -d
+bin/run.sh
 
 # 停止 trojan 服务
-docker-compose down
+bin/stop.sh
 ```
 
 
-### 4. 自定义伪装站点内容
+### 0x34 自定义伪装站点内容
 
 把 [`nginx/html`](nginx/html) 下的内容替换为你站点的内容。
 
 
 
-## 自动刷新证书
+## 0x40 自动刷新证书
 
 certbot 申请的证书有效期为 90 天，在到期前的 30 天可以重新执行以下命令为更新证书有效期：
 
 ```
-/usr/local/bin/certbot renew
+/usr/bin/certbot renew
 ```
 
-> 该命令会占用 80 端口，执行前要停止相关进程（如 nginx）
+> 该命令会占用 80 端口，执行前要停止相关进程
 
 但是每次都手动更新会比较麻烦，可以把 [renew_cert.sh](renew_cert.sh) 脚本设置到 crontab 自动更新证书：
 
@@ -102,14 +103,14 @@ certbot 申请的证书有效期为 90 天，在到期前的 30 天可以重新�
 crontab -e
 
 # 每两个月更新一次证书
-0 0 1 */2 0 /bin/sh /usr/local/trojan-docker/renew_cert.sh
+0 0 1 */2 0 /bin/sh /usr/local/trojan-docker/renew_cert.sh "/usr/local/trojan-docker"
 ```
 
 
-## 各开放端口用途一览
+## 0x50 各开放端口用途一览
 
 | 端口 | 进程 | 用途 | 备注 |
-|:---:|:---:|:---:|:---:|
+|:---:|:---:|:---:|:---|
 | 443 | trojan | trojan 代理服务 | - |
 | 8443 | nginx | 伪装 HTTPS 服务 | - |
 | 80 | nginx | 伪装 HTTP 服务 | - |
