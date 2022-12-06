@@ -18,6 +18,7 @@ services:
       - ./cert/:/etc/nginx/cert/
       - ./nginx/html:/usr/share/nginx/html
     ports:
+      - "80:80"
       - "8443:8443"
     networks: 
       vpn:
