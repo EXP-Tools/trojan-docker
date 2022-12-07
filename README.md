@@ -62,8 +62,8 @@ git clone https://github.com/lyy289065406/trojan-docker /usr/local/trojan-docker
 cd /usr/local/trojan-docker
 
 # 构建 docker 镜像
-# password 为之后客户端连接 trojan 的密码
-# domain 为前面准备好的域名
+# -p 为之后客户端连接 trojan 的密码
+# -d 为前面准备好的域名
 bin/build.sh -p "demo_password" -d "demo_domain.com"
 
 # 刷新证书有效期，并复制宿主机的 HTTPS 证书到 docker 容器
