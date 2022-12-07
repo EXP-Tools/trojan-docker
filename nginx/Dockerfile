@@ -10,6 +10,7 @@ RUN apt-get clean && \
     apt-get update -y && \
     apt-get install -y procps build-essential libpq-dev nodejs
 
+ADD ./html /usr/share/nginx/html
 ADD ./etc/camouflage_site.conf /etc/nginx/conf.d/camouflage_site.conf
 RUN mkdir -p /etc/nginx/cert/ && \
     mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.bak && \ 
