@@ -1,7 +1,3 @@
-# How to use :
-# docker build -t expm02/docker-nginx --build-arg domain=demo_domain.com .
-# --------------------------------------------------------------------------------
-
 FROM nginx:mainline
 ARG domain="demo_domain.com"
 
