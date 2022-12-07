@@ -80,7 +80,7 @@ bin/stop.sh
 
 ### 0x34 自定义伪装站点内容
 
-把 [`nginx/html`](nginx/html) 下的内容替换为你站点的内容。
+把 [html](./html) 下的内容替换为你站点的内容。
 
 
 
