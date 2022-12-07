@@ -16,7 +16,7 @@ services:
         - domain=${domain}
     volumes:
       - ./cert/:/etc/nginx/cert/
-      - ./nginx/html:/usr/share/nginx/html
+      - ./html:/usr/share/nginx/html
     ports:
       - "80:80"
       - "8443:8443"
