@@ -14,7 +14,7 @@
 
 另外强调下，本项目使用 certbot 为伪装站点签发 HTTPS 证书。 但由于 certbot 对各个组件的侵入性太强、而且首次安装有交互，所以该组件没有做成 docker 容器，而是将其直接安装到宿主机使用。
 
-> 本项目主要目的是简化 trojan 服务端的搭建流程，默认你已对 trojan 的原理有一定的熟悉，例如为什么要申请域名、为什么要申请证书等等，所以不会对这些内容做过多解释，若希望了解可参考这篇 [教程](https://exp-blog.com/gitbook/book/markdown/notes/net/trojan%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B.html)
+> 本项目主要目的是简化 trojan 服务端的搭建流程，默认你已对 trojan 的原理有一定的熟悉，例如为什么要申请域名、为什么要申请证书等等，所以不会对这些内容做过多解释，若希望了解可参考这篇 [教程](https://exp-blog.com/net/trojan-zheng-yan-kan-shi-jie-jiao-cheng/)
 
 
 ## 0x10 环境要求
