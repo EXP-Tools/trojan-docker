@@ -1,7 +1,3 @@
-# How to use :
-# docker build -t expm02/docker-trojan --build-arg password=demo_password .
-# --------------------------------------------------------------------------------
-
 FROM centos:7
 ARG password="demo_password"
 

@@ -50,20 +50,20 @@
 - 该命令需要先把 DNS 解析到当前服务器才能成功生成证书（临时域名购买和解析可以到 [namesilo](https://www.namesilo.com)）
 - 若是第一次执行该命令，需要根据交互步骤先注册邮箱，以后不再需要。
 - 若是更换过域名，需要先删除 `/etc/letsencrypt/live/旧域名` 和 `/etc/letsencrypt/renewal/旧域名.conf`，否则无法生成新域名的证书。
-- 生成证书时会使用 80 端口，若有服务占用了 80 端口，需要先关停服务，待证书创建完之后再重启 80 服务。
+- 生成证书时会使用 80 端口，若有服务占用了 80 端口（例如此工程的 nginx），需要先关停服务，待证书创建完之后再重启 80 服务。
 
 
 
 ### 0x33 安装 trojan 服务
 
 ```shell
-# 下载本项目仓库
+# 下载本工程
 git clone https://github.com/lyy289065406/trojan-docker /usr/local/trojan-docker
 cd /usr/local/trojan-docker
 
 # 构建 docker 镜像
-# password 为之后客户端连接 trojan 的密码
-# domain 为前面准备好的域名
+# -p 为之后客户端连接 trojan 的密码
+# -d 为前面准备好的域名
 bin/build.sh -p "demo_password" -d "demo_domain.com"
 
 # 刷新证书有效期，并复制宿主机的 HTTPS 证书到 docker 容器
@@ -73,14 +73,14 @@ bin/renew_cert.sh "/usr/local/trojan-docker"
 # 在后台启动 trojan 服务
 bin/run.sh
 
-# 停止 trojan 服务
+# 停止 trojan 服务（仅需要时）
 bin/stop.sh
 ```
 
 
 ### 0x34 自定义伪装站点内容
 
-把 [`nginx/html`](nginx/html) 下的内容替换为你站点的内容。
+把 [html](./html) 下的内容替换为你站点的内容。
 
 
 
