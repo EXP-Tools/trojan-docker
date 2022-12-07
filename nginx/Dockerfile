@@ -13,6 +13,6 @@ RUN mkdir -p /etc/nginx/cert/ && \
     sed -i "s/YOUR_DOMAIN/${domain}/g" /etc/nginx/conf.d/camouflage_site.conf
 
 RUN echo "alias ll='ls -alF'" >> /root/.bashrc
-EXPOSE 80,8443
+EXPOSE 80 8443
 WORKDIR /etc/nginx/
 
