@@ -103,7 +103,7 @@ certbot 申请的证书有效期为 90 天，在到期前的 30 天可以重新�
 crontab -e
 
 # 每两个月更新一次证书
-0 0 1 */2 0 /bin/sh /usr/local/trojan-docker/renew_cert.sh "/usr/local/trojan-docker"
+0 0 1 */2 0 /bin/sh -c "cd /usr/local/trojan-docker && bin/renew_cert.sh /usr/local/trojan-docker"
 ```
 
 
