@@ -58,7 +58,7 @@
 
 ```shell
 # 下载本工程
-git clone https://github.com/lyy289065406/trojan-docker /usr/local/trojan-docker
+git clone https://github.com/EXP-Tools/trojan-docker /usr/local/trojan-docker
 cd /usr/local/trojan-docker
 
 # 构建 docker 镜像
