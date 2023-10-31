@@ -1,7 +1,7 @@
 FROM nginx:mainline
 ARG domain="demo_domain.com"
 
-RUN sed -i s@/deb.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list
+# RUN sed -i s@/deb.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list
 RUN apt-get clean && \
     apt-get update -y && \
     apt-get install -y procps build-essential libpq-dev nodejs
