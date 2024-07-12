@@ -16,6 +16,8 @@
 
 > 本项目主要目的是简化 trojan 服务端的搭建流程，默认你已对 trojan 的原理有一定的熟悉，例如为什么要申请域名、为什么要申请证书等等，所以不会对这些内容做过多解释，若希望了解可参考这篇 [教程](https://exp-blog.com/net/trojan-zheng-yan-kan-shi-jie-jiao-cheng/)
 
+👉 VPS 服务器注册转送门 [vultr](https://www.vultr.com/?ref=9626595)
+👉 vulrt 注册首充 $35 送 $100 优惠[点我](https://www.vultr.com/?ref=9626596-8H)
 
 ## 0x10 环境要求
 
